@@ -88,5 +88,58 @@ class myTest(unittest.TestCase):
             }
     	]
 
+    def test_check_pickup(self):
+        car1 = Car(10, 10, (8,9))
+        car1.pickup_queue = [
+    		{
+            	"name": "Nancy",
+                "start": [9,9],
+                "end": [1,3]
+            }
+    	]
+        car1.drop_off_queue = [
+    		{
+            	"name": "Elon",
+                "start": [3,5],
+                "end": [8,7]
+            },
+            {
+            	"name": "George",
+                "start": [1,2],
+                "end": [4,3]
+            }
+    	]
+
+        car1.check_pickup()
+        self.assertEqual( len(car1.pickup_queue), 1)
+        self.assertEqual( len(car1.drop_off_queue), 2)
+
+        car2 = Car(10, 10, (9,9))
+        car2.pickup_queue = [
+    		{
+            	"name": "Nancy",
+                "start": [9,9],
+                "end": [1,3]
+            }
+    	]
+        car2.drop_off_queue = [
+    		{
+            	"name": "Elon",
+                "start": [3,5],
+                "end": [8,7]
+            },
+            {
+            	"name": "George",
+                "start": [1,2],
+                "end": [4,3]
+            }
+    	]
+
+        car2.check_pickup()
+        self.assertEqual( len(car2.pickup_queue), 0)
+        self.assertEqual( len(car2.drop_off_queue), 3)
+
+
+
 
 unittest.main()
