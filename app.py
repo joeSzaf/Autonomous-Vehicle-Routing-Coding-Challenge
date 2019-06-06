@@ -5,24 +5,13 @@ Y_GRID_DIMENTION = 10
 # create function to generate a grid given an x and y dimension
 
 class Car:
-    def __init__(self, x_size, y_size):
+    def __init__(self, x_size, y_size, car_start_location=(0,0) ):
         self.x_size = x_size
         self.y_size = y_size
-        self.car_location = (0,0)
+        self.car_location = car_start_location
         self.total_ticks = 0
         self.pickup_queue = []
-        self.drop_off_queue = [
-    		{
-            	"name": "Elon",
-                "start": [3,5],
-                "end": [8,7]
-            },
-            {
-            	"name": "George",
-                "start": [1,2],
-                "end": [4,3]
-            }
-    	]
+        self.drop_off_queue = []
 
     def handle_pickup_requests(self, requests):
         for request in requests:
@@ -60,6 +49,15 @@ class Car:
 
         # in the event of a tie, it returns the first node in the queue for drop off
         return shortest_distance
+
+    def check_pickup(self):
+        new_pickup_list = []
+        for passenger in self.pickup_queue:
+            if passenger["start"][0] == self.car_location[0] and passenger["start"][1] == self.car_location[1]:
+                self.drop_off_queue.append(passenger)
+            else:
+                new_pickup_list.append(passenger)
+        self.pickup_queue = new_pickup_list
 
     def choose_next_space(self):
         # init shortest_distance to be maximum size possible based on grid size and number of ride requests
@@ -122,4 +120,29 @@ class Car:
 
 car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION)
 
-print(car.choose_next_space())
+car.drop_off_queue = [
+    {
+        "name": "Elon",
+        "start": [3,5],
+        "end": [8,7]
+    },
+    {
+        "name": "George",
+        "start": [1,2],
+        "end": [4,3]
+    }
+]
+
+car.pickup_queue = [
+    {
+        "name": "Nancy",
+        "start": [9,9],
+        "end": [1,3]
+    }
+]
+
+
+print(car.pickup_queue)
+car.check_pickup()
+print(car.pickup_queue)
+print(car.drop_off_queue)
