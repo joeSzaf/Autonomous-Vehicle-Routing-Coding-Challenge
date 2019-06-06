@@ -65,7 +65,7 @@ class myTest(unittest.TestCase):
 
         self.assertEqual( car.calculate_total_distances((0,0)), 40)
         self.assertEqual( car.calculate_total_distances((3,5)), 20)
-'''
+
     def test_choose_next_space(self):
         car = Car(10, 10)
         car.pickup_queue = [
@@ -87,7 +87,6 @@ class myTest(unittest.TestCase):
                 "end": [4,3]
             }
     	]
-'''
 
 
 unittest.main()
