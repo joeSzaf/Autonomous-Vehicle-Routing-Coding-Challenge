@@ -17,6 +17,10 @@ class Car:
         for request in requests:
             self.pickup_queue.append(request)
 
+    def choose_next_space(self):
+        if self.car_location[0] > 0:
+            #check left space
+
 
 car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION)
 
