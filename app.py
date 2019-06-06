@@ -12,6 +12,7 @@ class Car:
         self.total_ticks = 0
         self.pickup_queue = []
         self.drop_off_queue = []
+        self.dropped_off_passengers = []
 
     def handle_pickup_requests(self, requests):
         for request in requests:
@@ -58,6 +59,15 @@ class Car:
             else:
                 new_pickup_list.append(passenger)
         self.pickup_queue = new_pickup_list
+
+    def check_drop_off(self):
+        new_drop_off_list = []
+        for passenger in self.drop_off_queue:
+            if passenger["end"][0] == self.car_location[0] and passenger["end"][1] == self.car_location[1]:
+                self.dropped_off_passengers.append(passenger)
+            else:
+                new_drop_off_list.append(passenger)
+        self.drop_off_queue = new_drop_off_list
 
     def choose_next_space(self):
         # init shortest_distance to be maximum size possible based on grid size and number of ride requests
@@ -118,7 +128,7 @@ class Car:
 
 
 
-car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION)
+car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (4,3))
 
 car.drop_off_queue = [
     {
@@ -142,7 +152,9 @@ car.pickup_queue = [
 ]
 
 
-print(car.pickup_queue)
-car.check_pickup()
-print(car.pickup_queue)
 print(car.drop_off_queue)
+car.check_drop_off()
+car.car_location = (8,7)
+car.check_drop_off()
+print(car.drop_off_queue)
+print(car.dropped_off_passengers)
