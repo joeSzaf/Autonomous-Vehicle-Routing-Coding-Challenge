@@ -17,8 +17,17 @@ class Car:
         for request in requests:
             self.pickup_queue.append(request)
 
+    def calculate_total_distances(self, space):
+        total_blocks = 0
+
+        for destination in self.drop_off_queue:
+            total_blocks += abs(space[0] - destination["end"][0])
+            total_blocks += abs(space[1] - destination["end"][1])
+
+        return total_blocks
+
 
 car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION)
 
 car.handle_pickup_requests([1,2])
-print(car.pickup_queue)
+print(car.calculate_total_distances((0,0)))

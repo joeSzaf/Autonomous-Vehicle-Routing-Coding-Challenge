@@ -41,5 +41,23 @@ class myTest(unittest.TestCase):
         self.assertEqual( len(car.pickup_queue), 3 )
         self.assertEqual( car.pickup_queue[-1]["name"], "Nancy" )
 
+    def test_calculate_total_distances(self):
+        car = Car(10,10)
+        car.drop_off_queue = [
+    		{
+            	"name": "Elon",
+                "start": [3,5],
+                "end": [8,7]
+            },
+            {
+            	"name": "George",
+                "start": [1,2],
+                "end": [4,3]
+            }
+    	]
+
+        self.assertEqual( car.calculate_total_distances((0,0)), 22)
+        self.assertEqual( car.calculate_total_distances((3,5)), 10)
+
 
 unittest.main()
