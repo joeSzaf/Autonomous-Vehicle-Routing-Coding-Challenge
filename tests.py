@@ -43,6 +43,13 @@ class myTest(unittest.TestCase):
 
     def test_calculate_total_distances(self):
         car = Car(10,10)
+        car.pickup_queue = [
+    		{
+            	"name": "Nancy",
+                "start": [9,9],
+                "end": [1,3]
+            }
+    	]
         car.drop_off_queue = [
     		{
             	"name": "Elon",
@@ -56,8 +63,31 @@ class myTest(unittest.TestCase):
             }
     	]
 
-        self.assertEqual( car.calculate_total_distances((0,0)), 22)
-        self.assertEqual( car.calculate_total_distances((3,5)), 10)
+        self.assertEqual( car.calculate_total_distances((0,0)), 40)
+        self.assertEqual( car.calculate_total_distances((3,5)), 20)
+'''
+    def test_choose_next_space(self):
+        car = Car(10, 10)
+        car.pickup_queue = [
+    		{
+            	"name": "Nancy",
+                "start": [9,9],
+                "end": [1,3]
+            }
+    	]
+        car.drop_off_queue = [
+    		{
+            	"name": "Elon",
+                "start": [3,5],
+                "end": [8,7]
+            },
+            {
+            	"name": "George",
+                "start": [1,2],
+                "end": [4,3]
+            }
+    	]
+'''
 
 
 unittest.main()
