@@ -13,7 +13,12 @@ class Car:
         self.pickup_queue = []
         self.drop_off_queue = []
 
+    def handle_pickup_requests(self, requests):
+        for request in requests:
+            self.pickup_queue.append(request)
+
 
 car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION)
 
-print(car.)
+car.handle_pickup_requests([1,2])
+print(car.pickup_queue)
