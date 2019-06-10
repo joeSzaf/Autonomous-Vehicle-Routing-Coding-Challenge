@@ -171,8 +171,4 @@ class myTest(unittest.TestCase):
         self.assertEqual( len(car.dropped_off_passengers), 1)
         self.assertEqual( car.dropped_off_passengers[0]["name"], "Elon")
 
-
-
-
-
 unittest.main()
