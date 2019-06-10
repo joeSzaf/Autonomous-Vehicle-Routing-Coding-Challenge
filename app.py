@@ -124,11 +124,42 @@ class Car:
 
             return next_space
 
+    def print_board(self):
+        # create joining row
+        join_row = []
+        for col in range(self.x_size):
+            join_row.append(" | ")
+        join_row_string = "\n" + " ".join(join_row)+"\n"
+
+        # create base grid
+        grid = []
+        for row in range(self.y_size):
+            current_row = []
+            for space in range(self.x_size):
+                current_row.append("[ ]")
+            grid.append(current_row[:])
+
+        # add car location
+        grid[self.car_location[1]][self.car_location[0]] = "[C]"
+
+        # add pickup locations
+        for passenger in self.pickup_queue:
+            grid[passenger["start"][1]][passenger["start"][0]] = "[P]"
+
+        # add drop off locations
+        for passenger in self.drop_off_queue:
+            grid[passenger["end"][1]][passenger["end"][0]] = "[D]"
+
+        grid_string =[]
+        for row in grid:
+            grid_string.append("-".join(row))
+
+        print(join_row_string.join(grid_string))
+
+    def tick(self):
 
 
-
-
-car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (4,3))
+car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (0,0))
 
 car.drop_off_queue = [
     {
@@ -152,9 +183,12 @@ car.pickup_queue = [
 ]
 
 
-print(car.drop_off_queue)
-car.check_drop_off()
-car.car_location = (8,7)
-car.check_drop_off()
-print(car.drop_off_queue)
-print(car.dropped_off_passengers)
+
+
+# print(car.drop_off_queue)
+# car.check_drop_off()
+# car.car_location = (8,7)
+# car.check_drop_off()
+# print(car.drop_off_queue)
+# print(car.dropped_off_passengers)
+car.print_board()
