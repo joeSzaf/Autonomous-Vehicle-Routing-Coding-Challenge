@@ -1,9 +1,3 @@
-# Default size of the grid, given by problem
-X_GRID_DIMENSION = 10
-Y_GRID_DIMENTION = 10
-
-# create function to generate a grid given an x and y dimension
-
 class Car:
     def __init__(self, x_size, y_size, car_start_location=(0,0) ):
         self.x_size = x_size
@@ -117,7 +111,7 @@ class Car:
             return next_locations[0]
         else:
             closest_node_distance = self.x_size + self.y_size
-            next_space = None
+            next_space = next_locations[0]
 
             for location in next_locations:
                 distance = self.find_nearest_node(location)
@@ -162,6 +156,9 @@ class Car:
     def tick(self, requests):
         self.total_ticks += 1
 
+        self.car_location = self.choose_next_space()
+
+
         print('The car is currently at: (%s, %s)'%(self.car_location[0],self.car_location[1]))
         print("-----------------")
 
@@ -176,33 +173,9 @@ class Car:
         print('')
 
         self.print_board()
+        print('')
 
-
-
-
-
-car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (0,0))
-
-sample_queue = [
-    {
-        "name": "Elon",
-        "start": [3,5],
-        "end": [8,7]
-    },
-    {
-        "name": "George",
-        "start": [1,2],
-        "end": [4,3]
-    }
-]
-
-car.drop_off_queue = [
-    {
-        "name": "Nancy",
-        "start": [9,9],
-        "end": [1,3]
-    }
-]
-
-car.car_location = (3,5)
-car.tick(sample_queue)
+    def run(self, request_list):
+        for requests in request_list:
+            print("Current time: %s tick(s)"%(self.total_ticks))
+            self.tick(requests)
