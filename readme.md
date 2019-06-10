@@ -1,8 +1,64 @@
+# Autonomous Driving Car
+
+## Table of Contents
+1. About
+2. How to Run
+3. The Challenge
+4. The Methodology
+5. The Next Steps 
+
+## 1. About
+This project the solution to a coding challenge posed by a self driving car firm. They asked this problem to be written in c++ pr Python. Please see "The Challenge" section to see the original challenge. Please see the "Methodology" section to take a look at my methodology for this problem.
+
+## 2. How to Run
+### Running the sample data
+1. Clone this repo.
+2. Make sure you have the latest version of Python install on your computer.
+3. Make "Autonomous-Vehicle-Route-Coding-Challenge" your current directory.
+4. In the terminal run `python runme.py`. This is execute the program with the standard test case data. The output at each time interval is displayed in the terminal.
+
+At each time interval, the car's current location, any actions (drop off, pickup, or queue add), who is currently in the car, and a rendering of the grid of nodes is displayed
+
+[ ] - an empty node (street intersection)
+[C] - the node where the car is current at
+[P] - a node with a pickup request
+[D] - a node with a drop off request
+
+### Running different data (custom ride requests)
+All custom data can be configured in the `runme.py` file. Edit this file.
+
+#### Custom Requests
+If you want to run your own set of pick/drop off requests, edit the `requests` variable. This takes a list of JSON lists which can have as many requests as desired.
+
+n = number of time intervals
+
+##### A blank request
+```
+requests_time_n = []
+```
+
+This will advance the simulation by one time unit and not add any pickup requests.
+
+##### A list of requests with one request
+```
+requests_time_2 = [
+  {
+    "name": "Name of the passenger",
+    "start": [9,9],
+    "end": [1,3]
+  }
+]
+```
+"start" is a location of `[x,y]` where the passenger should be picked up
+"end" is a location of `[x,y]` where the passenger wants to be dropped off
+
+
+## 3. The Challenge
 https://github.com/joeSzaf/Autonomous-Vehicle-Routing-Coding-Challenge.git
 
 Challenge from company:
 
-We encourage you to spend no more than 3-4 hours on this challenge.  Please make sure you read the prompt carefully and allot yourself time to properly write up a summary of what you did and what your next steps would be if you had more time.  Please email your completed coding challenge back to alla@perceptiveautomata.com as a .zip file with your name as the title.
+We encourage you to spend no more than 3-4 hours on this challenge.  Please make sure you read the prompt carefully and allot yourself time to properly write up a summary of what you did and what your next steps would be if you had more time.
 
 Autonomous Vehicle Routing Coding Challenge
 Ride-hailing companies like Uber and Lyft have become ubiquitous means to get around cities. Efficient vehicle routing, or figuring out the fastest and most efficient way to direct vehicles to pick up and drop off multiple passengers at a time, has become a crucial component of their success.
@@ -53,4 +109,6 @@ Submission:  Please return all of your code, as well as a write up of your solut
 
 Feel free to code your solution in either Python or C++.
 
-Let us know if you have any questions and happy coding!
+## 4. The Methodology
+
+## 5. Next Steps
