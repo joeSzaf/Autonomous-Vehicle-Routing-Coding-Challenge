@@ -56,13 +56,13 @@ requests_time_n = [
 If you want to change the custom grid size, the first two parameters of the Car object initialization call are the X and Y sizes of the grid respectfully. The third parameter is the starting location of the car given a tuple with an x and y location. Edit any of these parameters.
 
 ```
-car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (0,0))
+car = Car(X_GRID_DIMENSION, Y_GRID_DIMENSION, (0,0))
 ```
 
 ## 3. The Challenge
 https://github.com/joeSzaf/Autonomous-Vehicle-Routing-Coding-Challenge.git
 
-Challenge from company:
+Challenge from the company:
 
 We encourage you to spend no more than 3-4 hours on this challenge.  Please make sure you read the prompt carefully and allot yourself time to properly write up a summary of what you did and what your next steps would be if you had more time.
 
@@ -134,13 +134,13 @@ This method could potentially lead to a long wait time for passengers with furth
 ## 5. Next Steps
 Here are the features that would be added if there was more time.
 ### Immediate Items
--Cleaner way to handle user input of custom data.
--More comprehensive test suite that checks more complex pickup request situations, different grid sizes, etc.
--Refactor the code, especially the `choose_next_space` class method.
--Add functionality to the pathfinding algorithm to take into account the drop off locations of the passengers requesting rides that have not been picked up yet.
--Implement a passenger limit feature.
+-Cleaner way to handle user input of custom data.  
+-More comprehensive test suite that checks more complex pickup request situations, different grid sizes, etc.  
+-Refactor the code, especially the `choose_next_space` class method.  
+-Add functionality to the pathfinding algorithm to take into account the drop off locations of the passengers requesting rides that have not been picked up yet.  
+-Implement a passenger limit feature.  
 
 ### Wish List
--Create a visual GUI (not in the terminal) that displays the grid where the user can see the time automatically tick and/or control the flow of time.
--Create two different modes of determining who to be picked up next. Lyft Shared/UberPool vs Lyft/UberX. One is a shared ride and continuously picks up/drops off people. The other has a queue system that picks up one fare and waits to drop them off to pick up the next fare (First In First Out).
--Take into account the different traffic considerations like turning, main/side roads, traffic lights, one-way roads, etc.
+-Create a visual GUI (not in the terminal) that displays the grid where the user can see the time automatically tick and/or control the flow of time.  
+-Create two different modes of determining who to be picked up next. Lyft Shared/UberPool vs Lyft/UberX. One is a shared ride and continuously picks up/drops off people. The other has a queue system that picks up one fare and waits to drop them off to pick up the next fare (First In First Out).  
+-Take into account the different traffic considerations like turning, main/side roads, traffic lights, one-way roads, etc.  
