@@ -17,6 +17,7 @@ class Car:
     def handle_pickup_requests(self, requests):
         for request in requests:
             self.pickup_queue.append(request)
+            print('-> %s has been added to the pickup queue.'%(request["name"]))
 
     def calculate_total_distances(self, space):
         total_blocks = 0
@@ -56,6 +57,7 @@ class Car:
         for passenger in self.pickup_queue:
             if passenger["start"][0] == self.car_location[0] and passenger["start"][1] == self.car_location[1]:
                 self.drop_off_queue.append(passenger)
+                print(' + %s has been picked up.'%(passenger["name"]))
             else:
                 new_pickup_list.append(passenger)
         self.pickup_queue = new_pickup_list
@@ -65,6 +67,7 @@ class Car:
         for passenger in self.drop_off_queue:
             if passenger["end"][0] == self.car_location[0] and passenger["end"][1] == self.car_location[1]:
                 self.dropped_off_passengers.append(passenger)
+                print(' - %s has been dropped off.'%(passenger["name"]))
             else:
                 new_drop_off_list.append(passenger)
         self.drop_off_queue = new_drop_off_list
@@ -156,12 +159,31 @@ class Car:
 
         print(join_row_string.join(grid_string))
 
-    def tick(self):
+    def tick(self, requests):
+        self.total_ticks += 1
+
+        print('The car is currently at: (%s, %s)'%(self.car_location[0],self.car_location[1]))
+        print("-----------------")
+
+        self.handle_pickup_requests(requests)
+        self.check_pickup()
+        self.check_drop_off()
+        print("-----------------")
+
+        print('Current passengers:')
+        for passenger in self.drop_off_queue:
+            print("  <> %s"%(passenger["name"]))
+        print('')
+
+        self.print_board()
+
+
+
 
 
 car = Car(X_GRID_DIMENSION, Y_GRID_DIMENTION, (0,0))
 
-car.drop_off_queue = [
+sample_queue = [
     {
         "name": "Elon",
         "start": [3,5],
@@ -174,7 +196,7 @@ car.drop_off_queue = [
     }
 ]
 
-car.pickup_queue = [
+car.drop_off_queue = [
     {
         "name": "Nancy",
         "start": [9,9],
@@ -182,13 +204,5 @@ car.pickup_queue = [
     }
 ]
 
-
-
-
-# print(car.drop_off_queue)
-# car.check_drop_off()
-# car.car_location = (8,7)
-# car.check_drop_off()
-# print(car.drop_off_queue)
-# print(car.dropped_off_passengers)
-car.print_board()
+car.car_location = (3,5)
+car.tick(sample_queue)
