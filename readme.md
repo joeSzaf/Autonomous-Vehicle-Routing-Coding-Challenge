@@ -5,7 +5,7 @@
 2. How to Run
 3. The Challenge
 4. The Methodology
-5. The Next Steps 
+5. The Next Steps
 
 ## 1. About
 This project the solution to a coding challenge posed by a self driving car firm. They asked this problem to be written in c++ pr Python. Please see "The Challenge" section to see the original challenge. Please see the "Methodology" section to take a look at my methodology for this problem.
@@ -19,9 +19,9 @@ This project the solution to a coding challenge posed by a self driving car firm
 
 At each time interval, the car's current location, any actions (drop off, pickup, or queue add), who is currently in the car, and a rendering of the grid of nodes is displayed
 
-[ ] - an empty node (street intersection)
-[C] - the node where the car is current at
-[P] - a node with a pickup request
+[ ] - an empty node (street intersection)  
+[C] - the node where the car is current at  
+[P] - a node with a pickup request  
 [D] - a node with a drop off request
 
 ### Running different data (custom ride requests)
@@ -41,7 +41,7 @@ This will advance the simulation by one time unit and not add any pickup request
 
 ##### A list of requests with one request
 ```
-requests_time_2 = [
+requests_time_n = [
   {
     "name": "Name of the passenger",
     "start": [9,9],
@@ -49,9 +49,8 @@ requests_time_2 = [
   }
 ]
 ```
-"start" is a location of `[x,y]` where the passenger should be picked up
+"start" is a location of `[x,y]` where the passenger should be picked up  
 "end" is a location of `[x,y]` where the passenger wants to be dropped off
-
 
 ## 3. The Challenge
 https://github.com/joeSzaf/Autonomous-Vehicle-Routing-Coding-Challenge.git
@@ -75,15 +74,15 @@ There should be a function to advance time by one time-step (and hence the vehic
 
 	requests_time_0 = [
 		{
-                	"name": "Elon",
-                        "start": [3,5],
-                        "end": [8,7]
-                },
-                {
-                	"name": "George",
-                        "start": [1,2],
-                        "end": [4,3]
-                }
+    	"name": "Elon",
+      "start": [3,5],
+      "end": [8,7]
+    },
+    {
+    	"name": "George",
+      "start": [1,2],
+      "end": [4,3]
+    }
 	]
 
 while at time=1 the request list could be empty:
@@ -94,10 +93,10 @@ and at time=2 the request list could be:
 
 	requests_time_2 = [
 		{
-                	"name": "Nancy",
-                        "start": [9,9],
-                        "end": [1,3]
-                }
+  	   "name": "Nancy",
+        "start": [9,9],
+        "end": [1,3]
+    }
 	]
 
 
@@ -110,5 +109,6 @@ Submission:  Please return all of your code, as well as a write up of your solut
 Feel free to code your solution in either Python or C++.
 
 ## 4. The Methodology
+
 
 ## 5. Next Steps
